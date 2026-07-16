@@ -13,8 +13,9 @@ class _FilterPageState extends State<FilterPage> {
 
   void _checkContent() {
     String text = _controller.text.toLowerCase();
-    // یہاں وہ الفاظ لکھیں جنہیں آپ بلاک کرنا چاہتے ہیں
-    List<String> blockedKeywords = ["گندا", "badword1", "فحش"];
+    
+    // یہاں مزید الفاظ بڑھا دیے گئے ہیں
+    List<String> blockedKeywords = ["گندا", "فحش", "برائی", "گالی", "غلط", "لعنت", "بےغیرت", "فارغ"];
 
     bool containsBlocked = false;
     for (String word in blockedKeywords) {
@@ -25,7 +26,7 @@ class _FilterPageState extends State<FilterPage> {
     }
 
     setState(() {
-      _result = containsBlocked ? "خبردار! یہ مواد ممنوعہ ہے." : "یہ مواد محفوظ ہے.";
+      _result = containsBlocked ? "خبردار! یہ مواد ممنوعہ ہے." : "یہ مواد ٹھیک ہے.";
     });
   }
 
@@ -38,16 +39,16 @@ class _FilterPageState extends State<FilterPage> {
         child: Column(
           children: [
             TextField(
-              controller: _controller, 
-              decoration: InputDecoration(hintText: "یہاں لفظ لکھیں")
+              controller: _controller,
+              decoration: InputDecoration(hintText: "یہاں لفظ لکھیں"),
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _checkContent, 
-              child: Text("چیک کریں")
+              onPressed: _checkContent,
+              child: Text("چیک کریں"),
             ),
             SizedBox(height: 20),
-            Text(_result, style: TextStyle(fontSize: 20, color: Colors.red)),
+            Text(_result, style: TextStyle(fontSize: 18, color: Colors.red)),
           ],
         ),
       ),
